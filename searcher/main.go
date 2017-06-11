@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path"
 	"strings"
 )
 
@@ -12,7 +13,7 @@ func main() {
 	flag.Parse()
 
 	if flag.NArg() < 2 {
-		fmt.Fprintf(os.Stderr, "usage: gf <file> <pattern>")
+		fmt.Fprintf(os.Stderr, "usage: %s <file> <pattern>", path.Base(os.Args[0]))
 		os.Exit(1)
 	}
 	pattern := flag.Arg(0)
@@ -20,7 +21,7 @@ func main() {
 
 	f, err := os.Open(filename)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "cloud not open file %s: %v", filename, err)
+		fmt.Fprintf(os.Stderr, "%v", err)
 		os.Exit(2)
 	}
 	defer f.Close()
