@@ -76,7 +76,7 @@ func (s *scene) paint(r *sdl.Renderer) error {
 func (s *scene) destroy() {
 	s.bg.Destroy()
 
-	for i := 0; i < len(s.birds); i++ {
-		s.birds[i].Destroy()
+	for _, b := range s.birds {
+		b.Destroy()
 	}
 }
