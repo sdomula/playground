@@ -34,11 +34,11 @@ func run() error {
 	}
 	defer w.Destroy()
 
-	if err := drawTitle(r); err != nil {
-		return fmt.Errorf("could not draw title: %v", err)
-	}
+	// if err := drawTitle(r); err != nil {
+	// 	return fmt.Errorf("could not draw title: %v", err)
+	// }
 
-	time.Sleep(5 * time.Second)
+	// time.Sleep(5 * time.Second)
 
 	s, err := newScene(r)
 	if err != nil {
