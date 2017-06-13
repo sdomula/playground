@@ -59,6 +59,7 @@ func (s *scene) handleEvent(event sdl.Event) bool {
 		return true
 	case *sdl.MouseButtonEvent:
 		s.bird.jump()
+	case *sdl.MouseMotionEvent, *sdl.TouchFingerEvent, *sdl.WindowEvent:
 	default:
 		log.Printf("unkown event, %T", event)
 	}
