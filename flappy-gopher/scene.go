@@ -35,11 +35,12 @@ func (s *scene) run(events <-chan sdl.Event, r *sdl.Renderer) <-chan error {
 
 	go func() {
 		defer close(errc)
-		for range time.Tick(10 * time.Millisecond) {
+		tick := time.Tick(10 * time.Millisecond)
+		for {
 			select {
 			case e := <-events:
 				log.Printf("event: %T", e)
-			default:
+			case <-tick:
 				if err := s.paint(r); err != nil {
 					errc <- err
 				}
