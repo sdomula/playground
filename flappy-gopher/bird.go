@@ -7,7 +7,10 @@ import (
 	img "github.com/veandco/go-sdl2/sdl_image"
 )
 
-const gravity = 0.25
+const (
+	gravity   = 0.25
+	jumpSpeed = 5
+)
 
 type bird struct {
 	time     int
@@ -55,5 +58,5 @@ func (b *bird) destroy() {
 }
 
 func (b *bird) jump() {
-	b.speed = -10
+	b.speed = -jumpSpeed
 }
