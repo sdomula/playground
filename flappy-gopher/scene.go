@@ -10,8 +10,6 @@ import (
 )
 
 type scene struct {
-	time int
-
 	bg   *sdl.Texture
 	bird *bird
 }
@@ -43,6 +41,13 @@ func (s *scene) run(events <-chan sdl.Event, r *sdl.Renderer) <-chan error {
 					return
 				}
 			case <-tick:
+				s.update()
+				if s.bird.isDead() {
+					drawTitle(r, "Game Over")
+					time.Sleep(time.Second)
+					s.restart()
+				}
+
 				if err := s.paint(r); err != nil {
 					errc <- err
 				}
@@ -66,8 +71,15 @@ func (s *scene) handleEvent(event sdl.Event) bool {
 	return false
 }
 
+func (s *scene) update() {
+	s.bird.update()
+}
+
+func (s *scene) restart() {
+	s.bird.restart()
+}
+
 func (s *scene) paint(r *sdl.Renderer) error {
-	s.time++
 	r.Clear()
 
 	if err := r.Copy(s.bg, nil, nil); err != nil {
@@ -80,6 +92,15 @@ func (s *scene) paint(r *sdl.Renderer) error {
 
 	r.Present()
 	return nil
+}
+
+func (b *bird) restart() {
+	b.mu.Lock()
+	defer b.mu.Unlock()
+
+	b.y = 300
+	b.speed = 0
+	b.dead = false
 }
 
 func (s *scene) destroy() {
