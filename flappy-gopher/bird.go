@@ -34,7 +34,7 @@ func (b *bird) paint(r *sdl.Renderer) error {
 	b.time++
 	b.y -= b.speed
 	if b.y < 0 {
-		b.speed = -b.speed
+		b.speed = -b.speed // / 1.25
 		b.y = 0
 	}
 	b.speed += gravity
