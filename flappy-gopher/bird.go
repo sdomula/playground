@@ -53,3 +53,7 @@ func (b *bird) destroy() {
 		t.Destroy()
 	}
 }
+
+func (b *bird) jump() {
+	b.speed = -10
+}

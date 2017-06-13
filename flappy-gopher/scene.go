@@ -57,10 +57,12 @@ func (s *scene) handleEvent(event sdl.Event) bool {
 	switch event.(type) {
 	case *sdl.QuitEvent:
 		return true
+	case *sdl.MouseButtonEvent:
+		s.bird.jump()
 	default:
 		log.Printf("unkown event, %T", event)
-		return false
 	}
+	return false
 }
 
 func (s *scene) paint(r *sdl.Renderer) error {
