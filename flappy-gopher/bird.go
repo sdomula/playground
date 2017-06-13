@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"sync"
 
 	"github.com/veandco/go-sdl2/sdl"
@@ -28,15 +29,15 @@ type bird struct {
 func newBird(r *sdl.Renderer) (*bird, error) {
 	var textures []*sdl.Texture
 	for i := 1; i <= 4; i++ {
-		ipath := fmt.Sprintf("res/imgs/bird_frame_%d.png", i)
+		ipath := fmt.Sprintf("res/imgs/green_bird_frame_%d.png", i)
 		texture, err := img.LoadTexture(r, ipath)
 		if err != nil {
-			return nil, fmt.Errorf("could not load bird image_frame_%d: %v", i, err)
+			return nil, fmt.Errorf("could not load bird from %s: %v", ipath, err)
 		}
 		textures = append(textures, texture)
 	}
 
-	return &bird{textures: textures, x: 10, y: 300, w: 50, h: 43}, nil
+	return &bird{textures: textures, x: 10, y: 500, w: 50, h: 40}, nil
 }
 
 func (b *bird) update() {
@@ -60,6 +61,7 @@ func (b *bird) paint(r *sdl.Renderer) error {
 	if err := r.Copy(b.textures[i], nil, rect); err != nil {
 		return fmt.Errorf("could not copy bird: %v", err)
 	}
+	log.Printf("b.x %d, b.y %d\n", b.x, b.y)
 	return nil
 }
 
