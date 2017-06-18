@@ -16,3 +16,17 @@ func bubble(s []int) []int {
 	}
 	return s
 }
+
+// BubbleReverse make a reverse bubble sort.
+func BubbleReverse(s []int) []int {
+	n := len(s)
+	for x := 0; x < n; x++ {
+		for i := n - 1; i > x; i-- {
+			if s[i] > s[i-1] {
+				s[i], s[i-1] = s[i-1], s[i]
+			}
+		}
+	}
+
+	return s
+}
