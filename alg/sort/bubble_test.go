@@ -19,7 +19,7 @@ func eq(a, b []int) bool {
 
 func assertEq(t *testing.T, a, b []int) {
 	if !eq(a, b) {
-		t.Errorf("Expected %v, got %v", a, b)
+		t.Errorf("Expected %v, got %v", b, a)
 	}
 }
 
