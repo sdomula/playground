@@ -18,37 +18,37 @@ func eq(a, b []int) bool {
 }
 
 func TestBubble(t *testing.T) {
-	a := bubble([]int{2, 1})
+	a := Bubble([]int{2, 1})
 	b := []int{1, 2}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 
-	a = bubble([]int{3, 2, 1})
+	a = Bubble([]int{3, 2, 1})
 	b = []int{1, 2, 3}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 
-	a = bubble([]int{1, 2, 3})
+	a = Bubble([]int{1, 2, 3})
 	b = []int{1, 2, 3}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 
-	a = bubble([]int{9, 8, 7, 6, 5, 4, 3, 2, 1})
+	a = Bubble([]int{9, 8, 7, 6, 5, 4, 3, 2, 1})
 	b = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 
-	a = bubble([]int{3234972, 2, -1, -234, 0, 1})
+	a = Bubble([]int{3234972, 2, -1, -234, 0, 1})
 	b = []int{-234, -1, 0, 1, 2, 3234972}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 
-	a = bubble([]int{21, 4, 2, 13, 10, 0, 19, 11, 7, 5, 23, 18, 9, 14, 6, 8, 1, 20, 17, 3, 16, 22, 24, 15, 12})
+	a = Bubble([]int{21, 4, 2, 13, 10, 0, 19, 11, 7, 5, 23, 18, 9, 14, 6, 8, 1, 20, 17, 3, 16, 22, 24, 15, 12})
 	b = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
@@ -57,13 +57,13 @@ func TestBubble(t *testing.T) {
 }
 
 func TestNil(t *testing.T) {
-	a := bubble([]int{})
+	a := Bubble([]int{})
 	b := []int{}
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 
-	a = bubble([]int{})
+	a = Bubble([]int{})
 	var bs []int
 	if !eq(a, b) {
 		t.Errorf("Expected %v, got %v", bs, a)
@@ -72,7 +72,7 @@ func TestNil(t *testing.T) {
 
 func BenchmarkBubble(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		bubble([]int{21, 4, 2, 13, 10, 0, 19, 11, 7, 5, 23, 18, 9, 14, 6, 8, 1, 20, 17, 3, 16, 22, 24, 15, 12})
+		Bubble([]int{21, 4, 2, 13, 10, 0, 19, 11, 7, 5, 23, 18, 9, 14, 6, 8, 1, 20, 17, 3, 16, 22, 24, 15, 12})
 	}
 }
 

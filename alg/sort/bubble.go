@@ -1,6 +1,8 @@
 package sort
 
-func bubble(s []int) []int {
+// Bubble sorts and returns the given list
+// with bubblesort
+func Bubble(s []int) []int {
 	var swapped bool
 	for x := 0; x < len(s); x++ {
 		swapped = false
