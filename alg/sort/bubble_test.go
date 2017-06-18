@@ -107,3 +107,9 @@ func TestBubbleReverse(t *testing.T) {
 		t.Errorf("Expected %v, got %v", b, a)
 	}
 }
+
+func BenchmarkReverseBubble(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		BubbleReverse([]int{21, 4, 2, 13, 10, 0, 19, 11, 7, 5, 23, 18, 9, 14, 6, 8, 1, 20, 17, 3, 16, 22, 24, 15, 12})
+	}
+}
